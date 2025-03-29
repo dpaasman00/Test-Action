@@ -1,0 +1,14 @@
+name: Build OpenTelemetry Distribution
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build and Package
+        uses: observIQ/otel-distro-builder@v1.0.6
