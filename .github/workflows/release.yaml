@@ -11,4 +11,4 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Build and Package
-        uses: observIQ/otel-distro-builder@1.0.6
+        uses: observIQ/otel-distro-builder
