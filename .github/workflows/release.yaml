@@ -9,4 +9,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Build and Package
-        uses: observIQ/otel-distro-builder@v1.0.6
+        uses: observIQ/otel-distro-builder@main
