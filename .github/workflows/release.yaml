@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Build and Package
-        uses: "observIQ/otel-distro-builder@v1.0.8"
+        uses: "observIQ/otel-distro-builder@snapshot-name-template"
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
