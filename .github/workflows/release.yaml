@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Build and Package
-        uses: "observIQ/otel-distro-builder@goreleaser-v2"
+        uses: "observIQ/otel-distro-builder@conditionally-render-nfmps"
         with:
           platforms: darwin/arm64
       - name: Create Release
