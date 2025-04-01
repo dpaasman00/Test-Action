@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Build and Package
-        uses: "observIQ/otel-distro-builder@conditionally-render-nfmps"
+        uses: "observIQ/otel-distro-builder@fix-snapshot-template"
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
