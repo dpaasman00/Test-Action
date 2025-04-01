@@ -11,7 +11,7 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v4
       - name: Build and Package
-        uses: "observIQ/otel-distro-builder@fix-snapshot-template"
+        uses: "observIQ/otel-distro-builder@main"
         with:
           platforms: darwin/arm64
       - name: Create Release
