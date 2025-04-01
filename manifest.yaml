@@ -3,7 +3,7 @@ dist:
   name: dp-test
   description: OpenTelemetry Collector build with Bindplane components
   output_path: ./_build
-  version: 0.0.34
+  version: 0.0.36
 conf_resolver:
   default_uri_scheme: "env"
 extensions:
