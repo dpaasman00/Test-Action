@@ -10,11 +10,10 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
-        with:
-          # For goreleaser
-          fetch-depth: 0
       - name: Build and Package
-        uses: "observIQ/otel-distro-builder@fix-snapshot-template"
+        uses: "observIQ/otel-distro-builder@conditionally-render-nfmps"
+        with:
+          platforms: darwin/arm64
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
