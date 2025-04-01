@@ -8,7 +8,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+        with:
+          # For goreleaser
+          fetch-depth: 0
       - name: Build and Package
         uses: "observIQ/otel-distro-builder@fix-snapshot-template"
       - name: Create Release
