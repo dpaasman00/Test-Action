@@ -13,8 +13,8 @@ jobs:
       - name: Build and Package
         uses: "observIQ/otel-distro-builder@fix/version"
         with:
-          os: linux, darwin
-          arch: arm64, amd64
+          os: linux,darwin
+          arch: arm64,amd64
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
