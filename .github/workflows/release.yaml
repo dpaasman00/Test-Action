@@ -11,7 +11,7 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v4
       - name: Build and Package
-        uses: "observIQ/otel-distro-builder@main"
+        uses: "observIQ/otel-distro-builder@fix/action-path-cont"
         with:
           manifest: "manifest.yaml"
           os: linux,darwin
