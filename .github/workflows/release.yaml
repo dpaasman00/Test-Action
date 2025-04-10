@@ -13,6 +13,7 @@ jobs:
       - name: Build and Package
         uses: "observIQ/otel-distro-builder@main"
         with:
+          manifest: "manifest.yaml"
           os: linux,darwin
           arch: arm64,amd64
       - name: Create Release
