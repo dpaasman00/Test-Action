@@ -15,35 +15,24 @@ jobs:
     strategy:
       matrix:
         # Define the platforms we want to build for
-        os: [linux, darwin, windows]
-        arch: [arm64, amd64]
+        platform: [linux/amd64, linux/arm64, darwin/arm64]
         # Map platform identifiers to simpler names for artifact handling
         include:
-          - os: linux
-            arch: arm64
-            artifact_name: linux-arm64
-          - os: linux
-            arch: amd64
+          - platform: linux/amd64
             artifact_name: linux-amd64
-          - os: darwin
-            arch: arm64
+          - platform: linux/arm64
+            artifact_name: linux-arm64
+          - platform: darwin/arm64
             artifact_name: darwin-arm64
-          - os: darwin
-            arch: amd64
-            artifact_name: darwin-amd64
-          - os: windows
-            arch: amd64
-            artifact_name: windows-amd64
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
       # Build the OpenTelemetry distribution for each platform
       - name: Build and Package
-        uses: observiq/otel-distro-builder@fix/version
+        uses: observiq/otel-distro-builder@v1
         with:
-          os: ${{ matrix.os }}
-          arch: ${{ matrix.arch }}
+          platforms: ${{ matrix.platform }}
 
       # Upload platform-specific artifacts with a unique name
       # These artifacts are available for download in the GitHub Actions UI
@@ -52,11 +41,11 @@ jobs:
         with:
           name: distribution-artifacts-${{ matrix.artifact_name }}
           path: |
-            ${{ github.workspace }}/artifacts/*.deb
-            ${{ github.workspace }}/artifacts/*.rpm
-            ${{ github.workspace }}/artifacts/*.apk
-            ${{ github.workspace }}/artifacts/*.tar.gz
-            ${{ github.workspace }}/artifacts/*.sbom.json
+            ${{ startsWith(matrix.platform, 'linux') && format('{0}/artifacts/*.deb', github.workspace) || '' }}
+            ${{ startsWith(matrix.platform, 'linux') && format('{0}/artifacts/*.rpm', github.workspace) || '' }}
+            ${{ startsWith(matrix.platform, 'linux') && format('{0}/artifacts/*.apk', github.workspace) || '' }}
+            ${{ format('{0}/artifacts/*.tar.gz', github.workspace) }}
+            ${{ format('{0}/artifacts/*.sbom.json', github.workspace) }}
           retention-days: 5 # Artifacts are kept for 5 days then automatically deleted
 
   # Create a single release containing all platform artifacts
