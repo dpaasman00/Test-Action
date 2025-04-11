@@ -30,7 +30,7 @@ jobs:
 
       # Build the OpenTelemetry distribution for each platform
       - name: Build and Package
-        uses: observiq/otel-distro-builder@v1
+        uses: observiq/otel-distro-builder@64bed29f30dcbfb7677b719f0201c2f8b6f036d4
         with:
           platforms: ${{ matrix.platform }}
 
