@@ -11,7 +11,7 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v4
       - name: Build and Package
-        uses: "observIQ/otel-distro-builder@main"
+        uses: "observIQ/otel-distro-builder@dakotapaasman/bpop-2786-fix-builder-tool"
         with:
           os: "linux,darwin"
           arch: "amd64,arm64"
