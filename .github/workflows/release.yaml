@@ -11,9 +11,10 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v4
       - name: Build and Package
-        uses: "observIQ/otel-distro-builder@64bed29f30dcbfb7677b719f0201c2f8b6f036d4"
+        uses: "observIQ/otel-distro-builder@main"
         with:
-          platforms: "linux/amd64,linux/arm64"
+          os: "linux,darwin"
+          arch: "amd64,arm64"
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
