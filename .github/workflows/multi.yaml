@@ -59,6 +59,7 @@ jobs:
             ${{ startsWith(matrix.platform, 'windows') && format('{0}/artifacts/*.zip', github.workspace) || '' }}
             ${{ (startsWith(matrix.platform, 'linux') || startsWith(matrix.platform, 'darwin')) && format('{0}/artifacts/*.tar.gz', github.workspace) || '' }}
             ${{ format('{0}/artifacts/*.sbom.json', github.workspace) || '' }}
+            ${{ format('{0}/artifacts/*_checksums.txt', github.workspace) || '' }}
           retention-days: 5 # Artifacts are kept for 5 days then automatically deleted
 
   # Create a single release containing all platform artifacts
